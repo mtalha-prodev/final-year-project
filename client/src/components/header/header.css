@@ -1,0 +1,19 @@
+.container-fluid {
+  height: 35px !important;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.left__side {
+  display: flex;
+  align-items: center;
+}
+.left__side > a {
+  font-size: 12px;
+}
+.left__side > p {
+  font-size: 12px;
+  margin: 0;
+  margin-left: 10px;
+}

@@ -4,11 +4,13 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
 import Home from "./pages/Home";
 import Products from "./pages/Products";
+import Header from "./components/header/Header";
 
 function App() {
   return (
     <div className="App">
       <Router>
+        <Header />
         <Navbar />
         <Switch>
           <Route exact path="/" component={Home} />
