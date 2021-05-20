@@ -1,0 +1,41 @@
+.navbar {
+  padding: 0 !important;
+  height: 60px;
+  background-color: white;
+  box-shadow: 2px 4px 8px gray;
+  transition: all 1s ease;
+}
+.fix {
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  transition: all 1s ease;
+}
+
+.nev__left {
+  display: flex;
+  align-items: center;
+}
+.triger {
+  width: 60px;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-right: 1px solid #171717;
+  margin-right: 10px;
+  transition: all 200ms ease-in-out;
+}
+.humburger {
+  color: #171717;
+  transition: all 200ms ease-in-out;
+}
+
+.triger:hover {
+  background-color: lightgray;
+  cursor: pointer;
+}
+.triger:hover .humburger {
+  color: antiquewhite;
+}

@@ -1,0 +1,13 @@
+{
+  "name": "e-commerce",
+  "version": "1.0.0",
+  "description": "final year project e-commerce website",
+  "main": "server.js",
+  "author": "MUHAMMAD TALHA",
+  "license": "MIT",
+  "private": true,
+  "dependencies": {
+    "express": "^4.17.1",
+    "mongoose": "^5.12.10"
+  }
+}
