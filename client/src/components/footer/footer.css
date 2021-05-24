@@ -1,0 +1,142 @@
+.footer_section {
+  background-color: #374250;
+  padding: 20px 10px;
+  margin: 0 auto 0 0;
+  height: auto;
+}
+
+.footer_section h4 {
+  color: #ffffff80;
+  font-weight: 500;
+  margin-top: 18px;
+  font-size: 16px;
+  margin-bottom: -5px;
+  text-transform: capitalize;
+}
+.footer_section hr {
+  color: #ffffff80;
+}
+
+.footer_section .footer_link {
+  font-size: 14px;
+  color: #ffffff;
+  text-transform: capitalize;
+  transition: all ease 230ms;
+  text-decoration: none;
+  font-weight: 500;
+}
+.footer_section .footer_link:hover {
+  color: #0da9ef;
+  text-decoration: none;
+}
+
+.footer_section .footer_icon {
+  color: #ffffff1f;
+}
+
+.footer_section p {
+  color: #ffffff;
+  font-size: 14px;
+  font-weight: 500;
+}
+.footer_section p:nth-child(3n - 3) {
+  color: #ffffff;
+  font-size: 14px;
+  padding: 15px 0;
+}
+.footer_section p > span {
+  color: #7b7c7c;
+  font-size: 14px;
+}
+
+.social_media {
+  display: flex;
+}
+.social_link {
+  border: 1px solid #ffffff1f;
+  margin: 5px 10px 5px 0;
+  border-radius: 25px;
+  transition: all ease 230ms;
+}
+.social_link:hover {
+  background-color: #ffffff11;
+}
+.social_media span {
+  width: 30px !important;
+  height: 30px !important;
+  display: flex;
+  padding: 5px;
+  box-sizing: border-box;
+  align-items: center;
+  justify-content: center;
+}
+.social_icon {
+  color: #ffffff !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  font-size: 15px;
+}
+
+.payment_methods {
+  display: flex;
+  align-items: center;
+  height: 80px;
+}
+
+.pay_card {
+  margin-right: 10px;
+  font-size: 60px;
+  color: #ffffff;
+  flex: 0 2 50%;
+  background-color: #374250;
+}
+.footer__form form {
+  width: 100%;
+  margin-top: 20px;
+}
+
+.footer__form input {
+  position: relative;
+  background: transparent !important;
+  border: 1px solid #ffffff11 !important;
+  outline: 0 !important;
+  color: #ffffff !important;
+  padding: 10px 4px 10px 40px !important;
+}
+
+.footer__form input:focus {
+  transition: all ease 0.8s;
+  background-color: #ffffff05 !important;
+}
+.footer__form form .mail_icon {
+  position: absolute;
+  top: 14px;
+  left: 15px;
+  font-size: 20px;
+  color: #ffffff80 !important;
+}
+
+.form_item {
+  display: flex;
+}
+.footer__form form .btn {
+  height: 40px !important;
+  padding: 0px 25px !important;
+  font-weight: 500;
+}
+.footer__form form span {
+  display: inline-block;
+  font-size: 12px;
+  color: #ffffff80;
+  margin: 15px 0;
+}
+::placeholder {
+  color: #ffffff80 !important;
+}
+
+.copy_right {
+  margin-top: 20px !important;
+  color: #ffffff80 !important;
+  text-transform: capitalize;
+  font-size: 14px;
+}
