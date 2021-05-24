@@ -1,0 +1,54 @@
+.carousel__wrapper {
+  padding: 40px 0 !important;
+  background: url("../../../img/04.jpg") no-repeat center center;
+}
+.carousel {
+  height: 400px !important;
+  margin: auto !important;
+}
+
+.carousel-dark img {
+  height: 370px !important;
+  object-fit: contain;
+}
+.carousel-dark .w-50 {
+  width: 63% !important;
+  float: right !important;
+}
+
+.carousel-dark .carousel-caption {
+  float: left !important;
+  width: 35% !important;
+  padding-top: 0 !important;
+  top: 50%;
+  left: 12% !important;
+  transform: translateY(-50%);
+  text-align: left !important;
+}
+.carousel-dark .carousel-caption h2 {
+  font-weight: 900;
+}
+.carousel-dark .carousel-caption h4 {
+  font-weight: normal;
+}
+
+.carousel-dark .carousel-caption .btn-default {
+  background-color: #0da9ef;
+  color: #fff;
+  border-radius: 22px !important;
+  font-size: 15px;
+  margin-top: 20px;
+  font-weight: 500;
+  padding: 8px 18px;
+}
+
+.carousel-control-next,
+.carousel-control-prev {
+  width: 8% !important;
+}
+
+@media (max-width: 768px) {
+  .carousel-dark .w-50 {
+    width: 100% !important;
+  }
+}

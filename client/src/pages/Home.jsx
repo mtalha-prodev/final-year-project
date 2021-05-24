@@ -1,30 +1,10 @@
 import React from "react";
+import Carousel from "../components/home/Carousel";
 
 const Home = () => {
   return (
     <div>
-      Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ad nostrum
-      maxime sunt dicta nulla aperiam odit fuga reprehenderit officiis accusamus
-      deleniti rem eos fugit quod, veritatis eveniet velit molestias odio.
-      Delectus, et fugit! Veniam, nobis ipsam! Explicabo in voluptatem ullam
-      obcaecati fuga sunt nobis odio, omnis commodi ducimus ex. Impedit
-      repellat, sed consequuntur incidunt assumenda porro dolorum provident
-      corrupti facere. Officia suscipit dolor facilis odio ut illum magni id
-      vero laudantium eaque error dignissimos unde, corporis voluptatem facere
-      necessitatibus temporibus, repudiandae officiis quia nam nemo laboriosam
-      ea? Nobis, totam nisi. Nesciunt esse ratione nulla ut ipsa distinctio
-      aperiam tempora ullam quam, quas fugit doloribus sunt autem quia
-      consequatur dolor consectetur beatae excepturi perspiciatis necessitatibus
-      natus impedit. Obcaecati sapiente maiores minima. Aliquid accusantium ipsa
-      enim voluptatum corporis. Excepturi dolorum, nulla nam praesentium quod,
-      tempore porro fugit aliquam eum temporibus veritatis explicabo minus
-      beatae assumenda. Nemo quam architecto voluptates voluptate laborum
-      veniam! Sint minus cum molestiae facere aperiam sequi dignissimos
-      sapiente, fuga sunt ab officia asperiores temporibus esse cumque
-      laudantium dolorem culpa animi earum ex cupiditate eaque nostrum eum
-      natus! Laborum, sapiente. Commodi, quasi laborum earum illum eius vitae
-      quod tenetur reprehenderit excepturi debitis perferendis consequatur
-      obcaecati qui, similique iusto modi iure fugit libero tempore, odit
+      <Carousel />
       corrupti. Est a molestias tenetur vitae? Fugit, architecto corporis iure,
       aliquam reiciendis modi, voluptatum error officia laborum numquam suscipit
       ipsam molestiae ipsum accusamus. Similique voluptates deleniti officia quo
@@ -117,21 +97,6 @@ const Home = () => {
       tempora ratione, aliquid esse corporis quo expedita nihil voluptas,
       suscipit dolor! Nihil ipsum nulla asperiores quo vitae. In nam saepe quos
       veniam, amet, nihil sint consequatur nisi minima perferendis earum.
-      Magnam, doloremque quae vel, iusto earum, illo ad ratione qui excepturi
-      tempore suscipit voluptas quibusdam unde blanditiis! Explicabo unde fugiat
-      quam dolor nulla doloribus impedit dolore temporibus aut amet provident
-      reiciendis, totam expedita? Modi beatae tempora doloremque voluptates
-      debitis nisi porro id possimus, placeat fugiat aliquid voluptatibus.
-      Consectetur recusandae inventore, laudantium corrupti nihil nostrum dolor
-      magnam velit cumque, laborum id explicabo vitae animi earum? Voluptatibus
-      voluptates molestias, dolorem est rem voluptas similique provident
-      reiciendis architecto dolorum iste? Fuga laborum rerum consequatur animi,
-      blanditiis eligendi culpa doloribus dolorum nam quos eius quibusdam vero,
-      deserunt quo saepe, modi quia unde earum facilis voluptatem eveniet. Earum
-      eveniet dignissimos fugiat omnis? Accusantium nisi nobis, odio aliquam
-      voluptatum reiciendis autem ipsa dignissimos illum modi omnis tempora
-      suscipit beatae nesciunt? Saepe, sed? Ut, iure. Est, repellendus
-      reprehenderit iure iste quae officia architecto assumenda.
     </div>
   );
 };
