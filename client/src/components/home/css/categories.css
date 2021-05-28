@@ -1,0 +1,112 @@
+.top__categories {
+  margin: 30px 0;
+}
+.top__categories h2 {
+  text-align: center;
+  width: 100%;
+  font-weight: 600;
+  font-size: 22px;
+  color: #313b47;
+}
+.top__categories .category__items {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: nowrap;
+  margin-top: 15px;
+  margin-bottom: 25px;
+}
+.top__categories .card {
+  margin-right: 15px;
+  margin-top: 15px;
+}
+.top__categories .card .left__img {
+  width: 60% !important;
+  object-fit: contain;
+  float: left;
+}
+.top__categories .card .image__categories {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.125);
+}
+
+.top__categories .card .right__side__img {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  height: 100%;
+  padding: 10px 0;
+  border-left: 1px solid rgba(0, 0, 0, 0.125);
+}
+.top__categories .card .right__top__img,
+.top__categories .card .right__bottom__img {
+  width: 70% !important;
+  object-fit: contain;
+}
+.top__categories .card .card-body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+.top__categories .card .card-title {
+  font-size: 16px;
+  color: #313b47;
+}
+.top__categories .card .card-text {
+  font-size: 13px;
+}
+.btn-default {
+  color: #0da9ef;
+  border-radius: 25px;
+  border: 1px solid #0da9ef;
+  font-size: 13px;
+  padding: 6px 15px !important;
+  font-weight: 500;
+  transition: all 220ms ease-in;
+  box-shadow: none !important;
+}
+.btn-default:hover {
+  background-color: #0da9ef;
+  color: #fff;
+}
+
+.top__categories .all__categories {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 40px;
+}
+.top__categories .btn__all__category {
+  color: #374250;
+  border: 1px solid #e1e7ec;
+  align-items: center;
+  padding: 10px 30px !important;
+}
+.top__categories .btn__all__category:hover {
+  background-color: #f5f5f5;
+  color: #374250;
+}
+
+@media (max-width: 690px) {
+  .top__categories .category__items {
+    flex-wrap: wrap !important;
+    justify-content: space-between;
+  }
+  .top__categories .card {
+    width: 48% !important;
+    margin-right: 0 !important;
+  }
+}
+
+@media (max-width: 520px) {
+  .top__categories .category__items {
+    justify-content: center;
+  }
+  .top__categories .card {
+    width: 90% !important;
+    margin-right: 0 !important;
+  }
+}

@@ -1,0 +1,107 @@
+.products__feature {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 5px;
+}
+.products__feature .product__feature__card {
+  margin-top: 20px;
+  margin-bottom: 20px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  overflow-x: scroll;
+  padding-right: 5px;
+}
+
+.products__feature .product__feature__card::-webkit-scrollbar {
+  display: none;
+}
+.products__feature .product__feature__card .card {
+  object-fit: contain !important;
+  min-width: 16.5rem !important;
+  margin-top: 15px;
+  margin-right: 15px;
+  align-items: center;
+}
+.products__feature .product__feature__card .card .star__off {
+  color: red;
+  font-size: 14px;
+  font-weight: 600;
+}
+.products__feature .card .card-body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.products__feature .card .star__off {
+  width: 100%;
+}
+.products__feature .card .star__off p {
+  margin: 0;
+  margin-top: 20px;
+  margin-left: 20px;
+}
+.products__feature .card .card-body .card-title {
+  font-size: 20px;
+  font-weight: 400;
+  color: #313b47;
+}
+.products__feature .card .card-body .card-text {
+  font-size: 14px;
+  color: #313b47;
+}
+.products__feature .card .card-body .add__card__btn {
+  display: flex;
+}
+.products__feature .card .card-body .add__card__btn .whish__product {
+  color: #606975;
+  font-size: 16px;
+}
+.products__feature .card .card-body .add__card__btn .add__whish {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
+  margin-right: 10px;
+  width: 30px;
+  height: 30px;
+  border: 1px solid #e1e7ec;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: all 200ms ease-in;
+}
+.products__feature .card .card-body .add__card__btn .red {
+  color: red;
+}
+.products__feature .card .card-body .add__card__btn .add__whish:hover {
+  background-color: #f5f5f5;
+}
+
+@media (max-width: 1320px) {
+  .products__feature .product__feature__card .card {
+    min-width: 24% !important;
+  }
+}
+@media (max-width: 970px) {
+  .products__feature .product__feature__card .card {
+    min-width: 32% !important;
+  }
+}
+
+@media (max-width: 760px) {
+  .products__feature .product__feature__card .card {
+    min-width: 48% !important;
+  }
+}
+
+@media (max-width: 570px) {
+  .products__feature .product__feature__card {
+    width: 100%;
+  }
+  .products__feature .product__feature__card .card {
+    min-width: 100% !important;
+  }
+}
