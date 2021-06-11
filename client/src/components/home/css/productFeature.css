@@ -29,6 +29,7 @@
 .products__feature .product__feature__card .card .star__off {
   color: red;
   font-size: 14px;
+
   font-weight: 600;
 }
 .products__feature .card .card-body {

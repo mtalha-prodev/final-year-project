@@ -59,11 +59,6 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-}
-.nav__right {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
   margin-right: 10px;
 }
 
@@ -82,6 +77,12 @@
   height: 40px;
   color: #606975;
   transition: all 180ms ease-in;
+}
+
+.MuiBadge-badge {
+  background-color: #0da9ef !important;
+  font-size: 12px !important;
+  color: #e1e7ec;
 }
 
 .nav__right .add__cart:hover,
@@ -121,6 +122,87 @@
   padding: 2px;
   color: #171717;
 }
+
+/* drowpdow menu start  */
+
+/* add to cart start  */
+
+.nav__right .add__cart {
+  position: relative;
+}
+.nav__right .add__cart .dropdown__cart {
+  position: absolute;
+  top: 30px;
+  right: -10px;
+  background-color: transparent;
+  width: 230px;
+  z-index: 99;
+  cursor: default;
+  padding: 18px 0;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 220ms ease-in;
+}
+.nav__right .add__cart:hover .dropdown__cart {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* user account styling */
+.nav__right .user__avator {
+  position: relative;
+}
+
+.nav__right .user__avator .sign__body {
+  position: absolute;
+  width: 170px;
+  height: auto;
+  background-color: transparent;
+  top: 30px;
+  right: -10px;
+  z-index: 9;
+  padding: 18px 0;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 220ms ease-in;
+  cursor: default;
+}
+
+.nav__right .user__avator .sign__inner {
+  padding: 15px 0px;
+  background-color: #313b47;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border-radius: 5px;
+  box-shadow: 2px 2px 6px #606975;
+}
+.nav__right .user__avator a {
+  font-size: 13px;
+}
+.nav__right .user__avator p {
+  font-size: 13px;
+  margin-right: 8px;
+  margin-top: 10px;
+}
+.nav__right .user__avator .btn-default {
+  padding: 5px 12px !important;
+  background-color: #0da9ef;
+  color: #fff;
+}
+.nav__right .user__avator .btn-default:hover {
+  background-color: #0c9de0;
+}
+
+.nav__right .user__avator:hover .sign__body {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* add to card styling */
+
+/* drowpdow menu end  */
 
 /* sidebar menu items styling start  */
 

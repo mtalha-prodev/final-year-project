@@ -1,0 +1,89 @@
+.register {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.register .register__form {
+  width: 310px;
+  box-shadow: 2px 4px 8px gray;
+  padding: 20px;
+  margin: 30px 0;
+}
+.register .register__form h1 {
+  font-size: 26px;
+}
+.register .register__form .form-label {
+  font-size: 15px !important;
+}
+.register .register__form .form-text {
+  font-size: 12px !important;
+}
+.register .register__form input {
+  padding: 3px 10px !important;
+  box-shadow: none;
+  border-radius: 20px !important;
+}
+.register .register__form .btn {
+  font-size: 15px;
+  font-weight: 600;
+  padding: 5px 0 !important;
+}
+
+.register .already__account {
+  font-size: 14px;
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+.register .comp__logo {
+  margin-top: 25px !important;
+  margin-bottom: 5px !important;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 14px;
+}
+.register .comp__logo span {
+  border-bottom: 1px solid gray;
+  width: 32%;
+}
+.register .btn {
+  padding: 4px !important;
+  font-size: 14px !important;
+}
+.register .btn-default {
+  color: #fff;
+  background-color: #0da9ef;
+}
+.register .btn-default:hover {
+  background-color: #0b98da;
+}
+.register .form-text {
+  font-size: 12px;
+}
+.register .btn-google-auth,
+.register .btn-face-auth {
+  font-size: 14px;
+  font-weight: 600;
+  border-radius: 20px;
+  background-color: #374250;
+  color: #0da9ef;
+}
+.register .btn-google-auth:hover,
+.register .btn-face-auth:hover {
+  background-color: #313b47;
+}
+
+.register .btn-google-auth span {
+  color: #0aad0a;
+  font-weight: 800;
+}
+
+.register .btn-face-auth {
+  color: #e1e7ec;
+}
+.register .btn-face-auth span {
+  color: #0da9ef;
+  font-weight: 800;
+}

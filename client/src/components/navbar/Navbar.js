@@ -8,6 +8,8 @@ import { IoMdCart } from "react-icons/io";
 import { IoClose } from "react-icons/io5";
 import { BiSearch } from "react-icons/bi";
 import { FaOpencart, FaRegUser } from "react-icons/fa";
+import Badge from "@material-ui/core/Badge";
+import AddToCart from "./drowpdown/AddToCart";
 
 const Navbar = () => {
   const [navFixed, setNavFixed] = useState(false);
@@ -98,12 +100,41 @@ const Navbar = () => {
           </form>
 
           {/* end search box */}
+
+          {/* user account start */}
           <div className="user__avator">
             <FaRegUser className="avator__icon" />
+            {/* dropdown menu  */}
+            <div className="sign__body">
+              <div className="sign__inner">
+                <Link to="/login" className="btn btn-default mb-2">
+                  Login
+                </Link>
+                <p>
+                  New Customer!<Link to="/register"> Register</Link>
+                </p>
+              </div>
+            </div>
           </div>
+          {/* user account end */}
+
+          {/* add to card start */}
           <div className="add__cart">
-            <IoMdCart className="cart__icon" />
+            <Badge
+              badgeContent={10}
+              anchorOrigin={{
+                vertical: "top",
+                horizontal: "right",
+              }}
+              max={9}
+            >
+              <IoMdCart className="cart__icon" />
+            </Badge>
+            <div className="dropdown__cart">
+              <AddToCart />
+            </div>
           </div>
+          {/* add to card end */}
         </div>
       </nav>
     </div>

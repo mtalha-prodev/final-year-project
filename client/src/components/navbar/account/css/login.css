@@ -1,0 +1,93 @@
+.login {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.login h1 {
+  font-size: 28px;
+}
+.login__form {
+  width: 310px;
+  margin: 20px 0;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  padding: 20px;
+  box-shadow: 2px 4px 8px gray;
+}
+
+.login .form-label {
+  font-size: 15px !important;
+}
+.login input {
+  padding: 3px 10px !important;
+  box-shadow: none !important;
+  border-radius: 20px !important;
+}
+.login .form-text {
+  font-size: 12px;
+}
+
+.login .comp__logo {
+  margin-top: 25px !important;
+  margin-bottom: 5px !important;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.login .comp__logo span {
+  border-bottom: 1px solid gray;
+  width: 32%;
+}
+.login .btn {
+  padding: 4px !important;
+  font-size: 15px;
+}
+.login .btn-default {
+  color: #fff;
+  background-color: #0da9ef;
+}
+.login .btn-default:hover {
+  background-color: #0b98da;
+}
+
+.login .btn-dark {
+  background-color: transparent !important;
+  color: #0da9ef;
+  font-weight: 600;
+  border-radius: 20px;
+  border: 1px solid #0da9ef;
+  margin-bottom: 10px;
+}
+.login .btn-dark:hover {
+  background-color: #0da9ef !important;
+  color: #fff;
+}
+
+.login .btn-google-auth,
+.login .btn-face-auth {
+  font-size: 14px;
+  font-weight: 600;
+  border-radius: 20px;
+  background-color: #374250;
+  color: #0da9ef;
+}
+
+.login .btn-google-auth:hover,
+.login .btn-face-auth:hover {
+  background-color: #313b47;
+}
+
+.login .btn-google-auth span {
+  color: rgb(10, 173, 10);
+  font-weight: 800;
+}
+
+.login .btn-face-auth {
+  color: #e1e7ec;
+}
+.login .btn-face-auth span {
+  color: #0da9ef;
+  font-weight: 800;
+}

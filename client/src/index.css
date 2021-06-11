@@ -1,10 +1,13 @@
-@import url("https://fonts.googleapis.com/css2?family=PT+Sans:wght@400;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Cabin:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap");
 
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box !important;
-  font-family: "PT Sans", sans-serif !important;
+  font-family: "Cabin", sans-serif !important;
+}
+p {
+  margin: 0 !important;
 }
 a {
   text-decoration: none;
