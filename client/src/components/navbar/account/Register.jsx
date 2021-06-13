@@ -48,6 +48,7 @@ const Register = () => {
               onChange={registerEvent}
               value={userRegister.userName}
               required
+              minLength="3"
             />
           </div>
           <div className="mb-2">
@@ -73,9 +74,10 @@ const Register = () => {
               value={userRegister.password}
               onChange={registerEvent}
               required
+              minLength="8"
             />
             <div className="form-text">
-              password must be at least 6 charectors.
+              password must be at least 8 charectors.
             </div>
           </div>
           <div className="mb-2">
