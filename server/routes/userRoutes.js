@@ -58,7 +58,7 @@ router.post("/login", verifyToken, async (req, res) => {
 });
 
 // update file user profile pic using multer
-router.post("/upload", verifyToken, getUpload, async (req, res) => {
+router.post("/profile_pic", verifyToken, getUpload, async (req, res) => {
   if (!req.file) {
     res.status(400).json({
       status: false,
