@@ -34,7 +34,7 @@ const Login = () => {
     <div className="login">
       <div className="login__form">
         <h1>Login</h1>
-        <form onSubmit={onSubmitLogin}>
+        <form onSubmit={onSubmitLogin} autoComplete="off">
           <div className="mb-3">
             <label className="form-label">Email</label>
             <input
@@ -44,7 +44,7 @@ const Login = () => {
               value={login.email}
               onChange={loginEvent}
               required
-              autoComplete="off"
+              placeholder="enter your email"
             />
             <div className="form-text">
               We'll never share your email with anyone else.
@@ -59,6 +59,7 @@ const Login = () => {
               value={login.password}
               onChange={loginEvent}
               required
+              placeholder="*********"
             />
             <div className="form-text">
               password must be at least 6 charectors.

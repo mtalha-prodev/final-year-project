@@ -49,6 +49,7 @@ const Register = () => {
               value={userRegister.userName}
               required
               minLength="3"
+              placeholder="enter your name"
             />
           </div>
           <div className="mb-2">
@@ -60,6 +61,7 @@ const Register = () => {
               onChange={registerEvent}
               value={userRegister.email}
               required
+              placeholder="enter your email"
             />
             <div className="form-text">
               We'll never share your email with anyone else.
@@ -75,6 +77,7 @@ const Register = () => {
               onChange={registerEvent}
               required
               minLength="8"
+              placeholder="*********"
             />
             <div className="form-text">
               password must be at least 8 charectors.
@@ -89,6 +92,7 @@ const Register = () => {
               value={userRegister.confirmPassword}
               onChange={registerEvent}
               required
+              placeholder="***********"
             />
             <div className="form-text">password must match the above.</div>
           </div>
