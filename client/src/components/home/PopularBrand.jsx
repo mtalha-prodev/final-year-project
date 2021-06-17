@@ -9,16 +9,19 @@ const PopularBrand = () => {
         Img={brandImg1}
         title="Top Sellers"
         name="Palace Shell Track Jacket"
+        path="/"
       />
       <PopularBrandItem
         Img={brandImg1}
         title="new arrivals"
         name="Palace Shell Track Jacket"
+        path="/"
       />
       <PopularBrandItem
         Img={brandImg1}
         title="new arrivals"
         name="Palace Shell Track Jacket"
+        path="/"
       />
     </div>
   );
