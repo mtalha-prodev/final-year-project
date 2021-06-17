@@ -1,8 +1,7 @@
 import * as actionTypes from "../constants/types";
 const initialState = {
   loading: false,
-  user: [],
-  error: "",
+  error: {},
 };
 
 export const registerReducer = (state = initialState, action) => {
@@ -16,13 +15,12 @@ export const registerReducer = (state = initialState, action) => {
       return {
         ...state,
         loading: false,
-        user: action.payload,
-        error: "",
+        error: {},
       };
     case actionTypes.REGISTER_REQUEST_ERROR:
       return {
+        ...state,
         loading: false,
-        user: [],
         error: action.payload,
       };
     default:

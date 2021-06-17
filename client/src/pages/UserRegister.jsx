@@ -1,4 +1,5 @@
 import React from "react";
+import { withRouter } from "react-router-dom";
 import Register from "../components/navbar/account/Register";
 
 const UserRegister = () => {
@@ -9,4 +10,4 @@ const UserRegister = () => {
   );
 };
 
-export default UserRegister;
+export default withRouter(UserRegister);

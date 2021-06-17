@@ -1,6 +1,7 @@
 import "./css/login.css";
 import { Link } from "react-router-dom";
 import { useState } from "react";
+import Swal from "sweetalert2";
 
 const Login = () => {
   const [login, setLogin] = useState({
@@ -8,6 +9,7 @@ const Login = () => {
     password: "",
   });
   const onSubmitLogin = (e) => {
+    Swal.fire("login succes");
     // after submit input clrear
     e.preventDefault();
     setTimeout(() => {
@@ -59,7 +61,8 @@ const Login = () => {
               value={login.password}
               onChange={loginEvent}
               required
-              placeholder="*********"
+              placeholder="*****"
+              minLength="8"
             />
             <div className="form-text">
               password must be at least 6 charectors.

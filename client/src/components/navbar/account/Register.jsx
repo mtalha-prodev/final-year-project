@@ -1,14 +1,19 @@
 import "./css/register.css";
-import { useState } from "react";
-import { Link } from "react-router-dom";
+import { useState, useEffect } from "react";
+import { Link, useHistory } from "react-router-dom";
+import { useSelector, useDispatch } from "react-redux";
+import { registerRequest } from "../../../redux/action/registerAction";
 
 const Register = () => {
   const [userRegister, setUserRegister] = useState({
-    userName: "",
+    name: "",
     email: "",
     password: "",
     confirmPassword: "",
   });
+  const history = useHistory();
+  const register = useSelector((state) => state.register);
+  const dispatch = useDispatch();
 
   const registerEvent = (e) => {
     // input form value set in using state
@@ -23,10 +28,20 @@ const Register = () => {
 
   const SubmitRegister = (e) => {
     e.preventDefault();
+
+    const user = {
+      name: userRegister.name,
+      email: userRegister.email,
+      password: userRegister.password,
+    };
+
+    dispatch(registerRequest(user, history));
+    // console.log(userRegister);
+
     // after submit input clrear
     setTimeout(() => {
       setUserRegister({
-        userName: "",
+        name: "",
         email: "",
         password: "",
         confirmPassword: "",
@@ -44,11 +59,11 @@ const Register = () => {
             <input
               type="text"
               className="form-control"
-              name="userName"
+              name="name"
               onChange={registerEvent}
-              value={userRegister.userName}
-              required
-              minLength="3"
+              value={userRegister.name}
+              // required
+              // minLength="3"
               placeholder="enter your name"
             />
           </div>
@@ -60,7 +75,7 @@ const Register = () => {
               name="email"
               onChange={registerEvent}
               value={userRegister.email}
-              required
+              // required
               placeholder="enter your email"
             />
             <div className="form-text">
@@ -75,8 +90,8 @@ const Register = () => {
               name="password"
               value={userRegister.password}
               onChange={registerEvent}
-              required
-              minLength="8"
+              // required
+              // minLength="8"
               placeholder="*********"
             />
             <div className="form-text">
@@ -91,7 +106,7 @@ const Register = () => {
               name="confirmPassword"
               value={userRegister.confirmPassword}
               onChange={registerEvent}
-              required
+              // required
               placeholder="***********"
             />
             <div className="form-text">password must match the above.</div>
