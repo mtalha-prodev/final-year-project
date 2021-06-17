@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import FooterItem from "./FooterItem";
-import MailOutlineIcon from "@material-ui/icons/MailOutline";
 import "./footer.css";
 import {
   GrFacebookOption,
