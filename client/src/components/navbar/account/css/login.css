@@ -91,3 +91,8 @@
   color: #0da9ef;
   font-weight: 800;
 }
+
+::placeholder {
+  color: #7e858a !important;
+  font-size: 13px;
+}
