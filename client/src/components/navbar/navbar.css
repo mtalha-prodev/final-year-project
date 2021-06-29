@@ -91,6 +91,10 @@
   background-color: #f5f5f5;
 }
 
+.user__img {
+  border-radius: 50% !important;
+}
+
 .nav__right .search__box input {
   position: absolute;
   top: 0;
@@ -222,6 +226,7 @@
 
 .user__acount {
   height: 60px;
+  text-transform: uppercase;
 }
 .sidebar__item {
   background-color: #374250;

@@ -1,17 +1,28 @@
 import "./css/login.css";
-import { Link } from "react-router-dom";
-import { useState } from "react";
+import { Link, useHistory } from "react-router-dom";
+import { useState, useEffect } from "react";
 import Swal from "sweetalert2";
+import { useSelector, useDispatch } from "react-redux";
+import { loginRequest } from "../../../redux/action/loginAction";
 
 const Login = () => {
   const [login, setLogin] = useState({
     email: "",
     password: "",
   });
-  const onSubmitLogin = (e) => {
-    Swal.fire("login succes");
-    // after submit input clrear
+  const { userAuth } = useSelector((state) => state.login);
+  const history = useHistory();
+
+  const dispatch = useDispatch();
+  const OnSubmitLogin = (e) => {
     e.preventDefault();
+    const user = {
+      email: login.email,
+      password: login.password,
+    };
+
+    dispatch(loginRequest(user, history));
+    // after submit input clrear
     setTimeout(() => {
       setLogin({
         email: "",
@@ -19,6 +30,7 @@ const Login = () => {
       });
     }, 1000);
   };
+  // console.log(user);
 
   const loginEvent = (e) => {
     // input form value set in using state
@@ -32,11 +44,22 @@ const Login = () => {
     });
   };
 
+  useEffect(() => {
+    if (userAuth) {
+      history.push("/your_account");
+    }
+    return () => {
+      // if (user.userAuth) {
+      //   history.push("/login");
+      // }
+    };
+  }, []);
+
   return (
     <div className="login">
       <div className="login__form">
         <h1>Login</h1>
-        <form onSubmit={onSubmitLogin} autoComplete="off">
+        <form onSubmit={OnSubmitLogin} autoComplete="off">
           <div className="mb-3">
             <label className="form-label">Email</label>
             <input
@@ -45,7 +68,7 @@ const Login = () => {
               name="email"
               value={login.email}
               onChange={loginEvent}
-              required
+              // required
               placeholder="enter your email"
             />
             <div className="form-text">
@@ -60,9 +83,9 @@ const Login = () => {
               name="password"
               value={login.password}
               onChange={loginEvent}
-              required
+              // required
               placeholder="*****"
-              minLength="8"
+              // minLength="8"
             />
             <div className="form-text">
               password must be at least 6 charectors.

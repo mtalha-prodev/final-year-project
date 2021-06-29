@@ -1,5 +1,5 @@
 import "./navbar.css";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import MenuRoundedIcon from "@material-ui/icons/MenuRounded";
 import CloseRoundedIcon from "@material-ui/icons/CloseRounded";
 import { useState } from "react";
@@ -7,16 +7,28 @@ import { navData } from "./navdata/navData";
 import { IoMdCart } from "react-icons/io";
 import { IoClose } from "react-icons/io5";
 import { BiSearch } from "react-icons/bi";
-import { FaOpencart, FaRegUser } from "react-icons/fa";
+import { FaOpencart, FaRegUser, FaUserCircle } from "react-icons/fa";
 import Badge from "@material-ui/core/Badge";
 import AddToCart from "./drowpdown/AddToCart";
+import { useSelector, useDispatch } from "react-redux";
+import { setLogout } from "../../redux/action/loginAction";
+import { base_url } from "../../utils/constants";
 
 const Navbar = () => {
   const [navFixed, setNavFixed] = useState(false);
-
   const [searchBox, setSearchBox] = useState(false);
   // sidebar show
   const [sidebar, setSidebar] = useState(false);
+  const history = useHistory();
+
+  const { userAuth, user } = useSelector((state) => state.login);
+  const dispatch = useDispatch();
+  // console.log(user);
+
+  // user logout
+  const userLogout = () => {
+    dispatch(setLogout(history));
+  };
 
   const scrolly = () => {
     if (window.scrollY >= 40) {
@@ -45,12 +57,48 @@ const Navbar = () => {
             className={!sidebar ? "overlay__body" : "overlay__body show"}
             onClick={() => setSidebar(!sidebar)}
           ></div>
+
           {/* sidebar coding start */}
           <div className={!sidebar ? "sidebar" : "sidebar open"}>
             <div className="close" onClick={() => setSidebar(!sidebar)}>
               <CloseRoundedIcon className=" close_icon" />
             </div>
-            <div className="user__acount">hi,sign in</div>
+
+            {/* set userauth to login set name and pic in sidebar start */}
+            {userAuth ? (
+              <Link to="/your_account">
+                <div className="user__acount">
+                  {/* <FaRegUser className="avator__icon" /> */}
+                  <img
+                    src={`${base_url}/profile_pic/${user.profile_pic}`}
+                    alt={user.name}
+                    className="d-block user__img"
+                    style={{
+                      width: "45px",
+                      height: "40px",
+                      marginRight: "10px",
+                    }}
+                  />
+                  hi, {user.name}
+                </div>
+              </Link>
+            ) : (
+              <Link to="/login">
+                <div className="user__acount">
+                  <FaUserCircle
+                    className="avator__icon"
+                    style={{
+                      width: "35px",
+                      height: "35px",
+                      marginRight: "10px",
+                    }}
+                  />
+                  hi, sign in
+                </div>
+              </Link>
+            )}
+            {/* set userauth to login set name and pic in sidebar end */}
+
             <div className="sidebar__item">
               <ul className="navbar-nav flex-column">
                 {navData.map((item, index) => {
@@ -68,12 +116,15 @@ const Navbar = () => {
           </div>
           {/* sidebar coding end */}
 
+          {/* main manu logo start left side  */}
           <Link to="/" className="logo__dealStore">
             <FaOpencart className="logo__icon" />
             dealStore
           </Link>
         </div>
+        {/* main manu logo end  */}
 
+        {/* right side manu icons start  */}
         <div className="nav__right">
           {/* searching box start */}
           <form action="#">
@@ -102,20 +153,52 @@ const Navbar = () => {
           {/* end search box */}
 
           {/* user account start */}
-          <div className="user__avator">
-            <FaRegUser className="avator__icon" />
-            {/* dropdown menu  */}
-            <div className="sign__body">
-              <div className="sign__inner">
-                <Link to="/login" className="btn btn-default mb-2">
-                  Login
-                </Link>
-                <p>
-                  New Customer!<Link to="/register"> Register</Link>
-                </p>
+          {/* if user login authantication is true  */}
+          {userAuth ? (
+            <div className="user__avator">
+              {/* <FaRegUser className="avator__icon" /> */}
+              <img
+                src={`${base_url}/profile_pic/${user.profile_pic}`}
+                alt={user.name}
+                className="w-100 h-100 d-block user__img m-0"
+              />
+
+              {/* dropdown menu  */}
+              <div className="sign__body">
+                <div className="sign__inner">
+                  <Link to="/your_account">Your Account</Link>
+                  <Link to="/your_account">Profile</Link>
+                  <Link to="/your_account">Setting</Link>
+
+                  {/* set user logout  */}
+                  <button
+                    type="button"
+                    onClick={userLogout}
+                    className="btn btn-default mb-2"
+                  >
+                    Logout
+                  </button>
+                </div>
               </div>
             </div>
-          </div>
+          ) : (
+            //  if user not login
+
+            <div className="user__avator">
+              <FaRegUser className="avator__icon" />
+              {/* dropdown menu  */}
+              <div className="sign__body">
+                <div className="sign__inner">
+                  <Link to="/login" className="btn btn-default mb-2">
+                    Login
+                  </Link>
+                  <p>
+                    New Customer!<Link to="/register"> Register</Link>
+                  </p>
+                </div>
+              </div>
+            </div>
+          )}
           {/* user account end */}
 
           {/* add to card start */}

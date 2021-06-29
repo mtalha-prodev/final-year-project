@@ -38,18 +38,29 @@ router.post("/register", async (req, res) => {
 });
 
 // access login
-router.post("/login", verifyToken, async (req, res) => {
+router.post("/login", async (req, res) => {
   const { email, password } = req.body;
 
   const user = await User.findOne({ email });
 
   if (user && (await user.isPasswordMatch(password))) {
     // generate token
-    const token = jwt.sign({ id: user._id }, process.env.SECRET_KEY);
+    let token = jwt.sign(
+      { id: user._id, email: user.email },
+      process.env.SECRET_KEY,
+      {
+        expiresIn: 3600,
+      }
+    );
 
     res.status(200).json({
       message: "LOGIN SUCCESSFULY",
-      data: user,
+      user: {
+        email: user.email,
+        name: user.name,
+        profile_pic: user.profile_pic,
+        id: user._id,
+      },
       token: token,
     });
   } else {

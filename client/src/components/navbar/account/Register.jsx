@@ -11,6 +11,9 @@ const Register = () => {
     password: "",
     confirmPassword: "",
   });
+  // set to user login not to back after login
+  const userLogin = useSelector((state) => state.login);
+
   const history = useHistory();
   const register = useSelector((state) => state.register);
   const dispatch = useDispatch();
@@ -48,6 +51,17 @@ const Register = () => {
       });
     }, 1000);
   };
+
+  useEffect(() => {
+    if (userLogin.userAuth) {
+      history.push("/your_account");
+    }
+    return () => {
+      // if (userLogin.userAuth) {
+      //   history.push("/");
+      // }
+    };
+  }, []);
 
   return (
     <div className="register">
@@ -107,7 +121,7 @@ const Register = () => {
               value={userRegister.confirmPassword}
               onChange={registerEvent}
               // required
-              placeholder="***********"
+              placeholder="********"
             />
             <div className="form-text">password must match the above.</div>
           </div>
