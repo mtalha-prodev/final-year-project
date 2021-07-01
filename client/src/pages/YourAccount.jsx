@@ -1,6 +1,8 @@
 import { useEffect } from "react";
+import { RiArrowRightSLine } from "react-icons/ri";
 import { useSelector, useDispatch } from "react-redux";
-import { useHistory } from "react-router-dom";
+import { useHistory, Link } from "react-router-dom";
+import UserProfile from "../components/profile/UserProfile";
 const YourAccount = () => {
   const { userAuth } = useSelector((state) => state.login);
   const history = useHistory();
@@ -14,10 +16,19 @@ const YourAccount = () => {
   }, []);
 
   return (
-    <div>
-      {/* <img src={user.user.profile_pic} className="w-100 d-block" alt="avator" /> */}
-      your account
-    </div>
+    <>
+      <div className="set__route">
+        <Link to="/">home</Link>
+        <span>
+          <RiArrowRightSLine />
+        </span>
+        <Link to="/your_account">your account</Link>
+      </div>
+      <div className="container-xl profile">
+        <h1>Your Account</h1>
+        <UserProfile />
+      </div>
+    </>
   );
 };
 
