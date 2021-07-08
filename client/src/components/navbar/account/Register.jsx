@@ -80,6 +80,9 @@ const Register = () => {
               // minLength="3"
               placeholder="enter your name"
             />
+            <div className="form-text">
+              user name must be at least 3 charectors.
+            </div>
           </div>
           <div className="mb-2">
             <label className="form-label">Email</label>
