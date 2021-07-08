@@ -2,9 +2,13 @@ const router = require("express").Router();
 const jwt = require("jsonwebtoken");
 const User = require("../database/model/userSchema.js");
 const moment = require("moment");
+const bcrypt = require("bcryptjs");
 const verifyToken = require("../middleware/verifyToken.js");
 
+const fs = require("fs");
+
 const getUpload = require("./storage.js");
+const path = require("path");
 
 // set logic to uploadImage image in database
 
@@ -20,6 +24,11 @@ router.get("/", async (req, res) => {
     res.status(400).json({ message: "not found" });
   }
 });
+
+// user register route
+// Access: private
+// url: http://localhost:500/api/users/register
+// method: POST
 // user registration
 router.post("/register", async (req, res) => {
   try {
@@ -33,10 +42,18 @@ router.post("/register", async (req, res) => {
     await user.save();
     res.status(200).json({ user });
   } catch (error) {
-    res.status(502).json({ message: error });
+    res.status(502).json({
+      status: false,
+      errors: error.errors,
+      message: "form validatation error...",
+    });
   }
 });
 
+// user login route
+// Access: private
+// url: http://localhost:500/api/users/login
+// method: POST
 // access login
 router.post("/login", async (req, res) => {
   const { email, password } = req.body;
@@ -68,37 +85,97 @@ router.post("/login", async (req, res) => {
   }
 });
 
+// user profile pic upload route
+// Access: private
+// url: http://localhost:500/api/users/profile_pic
+// method: POST
 // update file user profile pic using multer
 router.post("/profile_pic", verifyToken, getUpload, async (req, res) => {
   if (!req.file) {
-    res.status(400).json({
+    res.status(401).json({
       status: false,
       message: "please choose a file...",
     });
-  } else {
-    try {
-      const temp = {
-        profile_pic: req.file.filename,
-        updatedAt:
-          moment().format("DD/MM/YYYY") + ";" + moment().format("hh:mm:ss"),
-      };
-      const updatedData = await User.findByIdAndUpdate(
-        { _id: req.user.id },
-        temp,
-        { new: true }
-      );
+  }
 
-      res.status(200).json({
-        message: "Uploaded successfully....",
-        user: updatedData,
-      });
-    } catch (error) {
-      res.status(401).json({
+  try {
+    const temp = {
+      profile_pic: req.file.filename,
+      updatedAt:
+        moment().format("DD/MM/YYYY") + ";" + moment().format("hh:mm:ss"),
+    };
+    const user = await User.findOneAndUpdate({ _id: req.user.id }, temp);
+    if (user.profile_pic != "empty-avatar.jpg") {
+      fs.unlinkSync("./public/profile_pic/" + user.profile_pic);
+    }
+
+    res.status(200).json({
+      message: "Uploaded successfully....",
+      user: {
+        name: user.name,
+        id: user._id,
+        email: user.email,
+        profile_pic: req.file.filename,
+      },
+    });
+  } catch (error) {
+    res.status(502).json({
+      status: false,
+      message: "user not found in database....",
+      error,
+    });
+  }
+});
+
+// user change password route
+// Access: private
+// url: http://localhost:500/api/users/change_password
+// method: PUT
+// updata user name & password
+router.put("/change_password", verifyToken, async (req, res) => {
+  try {
+    const { name, newPassword, newPassword2, oldPassword } = req.body;
+
+    const user = await User.findOne({ _id: req.user.id });
+    const isMatch = await bcrypt.compare(oldPassword, user.password);
+
+    if (!isMatch) {
+      res.status(400).json({
         status: false,
-        message: "user not found in database....",
-        error,
+        errors: "old password is not match...",
       });
     }
+    if (newPassword === newPassword2) {
+      // new password hashing
+      const salt = await bcrypt.genSalt(10);
+      const hashPassword = await bcrypt.hash(newPassword, salt);
+
+      const newData = {
+        name: name,
+        password: hashPassword,
+        updatedAt:
+          moment().format("DD/MM/YYYY") + ";" + moment().format("hh/mm/ss"),
+      };
+
+      const userUpdate = await User.findOneAndUpdate(
+        { _id: req.user.id },
+        newData,
+        { new: true }
+      );
+      res.json({
+        status: true,
+        user: userUpdate,
+      });
+    } else {
+      res.json({
+        msg: "new password is not be matched",
+      });
+    }
+  } catch (error) {
+    res.status(400).json({
+      status: false,
+      error,
+    });
   }
 });
 
