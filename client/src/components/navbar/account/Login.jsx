@@ -48,11 +48,11 @@ const Login = () => {
     if (userAuth) {
       history.push("/your_account");
     }
-    return () => {
-      // if (user.userAuth) {
-      //   history.push("/login");
-      // }
-    };
+    // return () => {
+    //   if (user.userAuth) {
+    //     history.block("/login");
+    //   }
+    // };
   }, []);
 
   return (
