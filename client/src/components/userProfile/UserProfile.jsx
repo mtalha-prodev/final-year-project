@@ -33,7 +33,7 @@ const UserProfile = () => {
         Icon={<FaSellcast />}
         Title="Seller Account"
         Text="sell your products"
-        Path="/your_seller"
+        Path="/seller_intro"
       />
     </div>
   );
