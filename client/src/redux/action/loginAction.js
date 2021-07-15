@@ -1,6 +1,7 @@
 import * as actionTypes from "../constants/types";
 import { base_url } from "../../utils/constants";
 import setAuthToken from "../../utils/setAuthToken";
+import Swal from "sweetalert2";
 import axios from "axios";
 
 export const loginRequest = (userData, history) => async (dispatch) => {
@@ -26,6 +27,31 @@ export const loginRequest = (userData, history) => async (dispatch) => {
     history.push("/your_account");
   } catch (error) {
     dispatch(loginError(error.response.data));
+    console.log(error.response.data);
+  }
+};
+
+// CHANGE PASSWORD
+export const changePassword = (user, history) => async (dispatch) => {
+  dispatch({
+    type: actionTypes.LOGIN_REQUEST,
+  });
+
+  try {
+    const res = await axios.put(`${base_url}/api/user/change_password`, user);
+
+    dispatch(loginSuccess());
+
+    // updata user detail in localStorage
+    localStorage.setItem("user", JSON.stringify(res.data.user));
+
+    dispatch({ type: actionTypes.CHANGE_PASSWORD, payload: res.data.user });
+
+    Swal.fire("Status", "Password Change Success", "success");
+    console.log(res.data.user);
+  } catch (error) {
+    dispatch(loginError(error.response.data));
+    dispatch(loginSuccess());
   }
 };
 

@@ -1,19 +1,22 @@
 import "./style/changePassword.css";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import { RiArrowRightSLine } from "react-icons/ri";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { useState } from "react";
+import { changePassword } from "../../../redux/action/loginAction";
 
 const ChangePassword = () => {
   const { user } = useSelector((state) => state.login);
-  //   console.log(user);
-
   const [passwordUpdata, setPasswordUpdata] = useState({
     name: user.name,
     oldPassword: "",
     newPassword: "",
     newPassword2: "",
   });
+
+  const dispatch = useDispatch();
+  const history = useHistory();
+  // console.log(user);
 
   const passwordEvent = (e) => {
     const { name, value } = e.target;
@@ -25,6 +28,14 @@ const ChangePassword = () => {
 
   const passwordChange = (e) => {
     e.preventDefault();
+    const user = {
+      name: passwordUpdata.name,
+      newPassword: passwordUpdata.newPassword,
+      newPassword2: passwordUpdata.newPassword2,
+      oldPassword: passwordUpdata.oldPassword,
+    };
+
+    dispatch(changePassword(user, history));
 
     setTimeout(() => {
       setPasswordUpdata({
@@ -83,8 +94,8 @@ const ChangePassword = () => {
                 <input
                   type="password"
                   className="form-control"
-                  name="newPassword1"
-                  value={passwordUpdata.newPassword1}
+                  name="newPassword"
+                  value={passwordUpdata.newPassword}
                   onChange={passwordEvent}
                   // required
                   placeholder="*****"

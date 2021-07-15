@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { RiArrowRightSLine } from "react-icons/ri";
-import { useSelector, useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
 import { useHistory, Link } from "react-router-dom";
 import UserProfile from "../components/userProfile/UserProfile";
 const YourAccount = () => {
@@ -12,7 +12,7 @@ const YourAccount = () => {
     if (!userAuth) {
       history.push("/login");
     }
-    return () => {};
+    // return () => {};
   }, []);
 
   return (

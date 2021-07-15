@@ -15,7 +15,7 @@ const Register = () => {
   const userLogin = useSelector((state) => state.login);
 
   const history = useHistory();
-  const register = useSelector((state) => state.register);
+  // const register = useSelector((state) => state.register);
   const dispatch = useDispatch();
 
   const registerEvent = (e) => {

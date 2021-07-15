@@ -22,9 +22,6 @@ export const loginReducer = (state = initialState, action) => {
     case actionTypes.LOGIN_REQUEST_ERROR:
       return {
         ...state,
-        loading: false,
-        user: {},
-        userAuth: false,
         error: action.payload,
       };
     case actionTypes.SET_USER_LOGIN:
@@ -40,6 +37,11 @@ export const loginReducer = (state = initialState, action) => {
         ...state,
         userAuth: false,
         user: {},
+      };
+    case actionTypes.CHANGE_PASSWORD:
+      return {
+        ...state,
+        user: action.payload,
       };
 
     default:
