@@ -162,13 +162,25 @@ router.put("/change_password", verifyToken, async (req, res) => {
         newData,
         { new: true }
       );
-      res.json({
+      res.status(200).json({
         status: true,
-        user: userUpdate,
+        user: {
+          email: userUpdate.email,
+          name: userUpdate.name,
+          profile_pic: userUpdate.profile_pic,
+          id: userUpdate._id,
+        },
+        // user: {
+        //   name: userUpdata.name,
+        //   email: userUpdate.email,
+        //   profile_pic: userUpdata.profile_pic,
+        //   id: userUpdata._id,
+        // },
       });
     } else {
-      res.json({
-        msg: "new password is not be matched",
+      res.status(405).json({
+        status: false,
+        errors: "new password is not be matched",
       });
     }
   } catch (error) {
