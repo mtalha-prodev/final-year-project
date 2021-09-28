@@ -31,8 +31,37 @@ export const loginRequest = (userData, history) => async (dispatch) => {
   }
 };
 
+// Profile api call update
+export const updateProfilePic = (formData) => async (dispatch) => {
+  // user profile request
+  // dispatch({
+  //   type: actionTypes.LOGIN_REQUEST,
+  // });
+
+  try {
+    const res = await axios.post(`${base_url}/api/user/profile_pic`, formData, {
+      "content-type": "multipart/form-data",
+    });
+
+    // console.log("user login data", user.data);
+    // console.log("user login data", user.data.user);
+    // store user dedail in localStorage
+
+    dispatch(loginSuccess());
+
+    localStorage.setItem("user", JSON.stringify(res.data.user));
+    dispatch({ type: actionTypes.UPDATE_PROFILE_PIC, payload: res.data.user });
+
+    Swal.fire("Status", "Profile Pic Upload Success", "success");
+  } catch (error) {
+    dispatch(loginError(error.response.data));
+    // console.log(error.response.data);
+    Swal.fire("Oops...", "Please Choose Profile Pic!", "error");
+  }
+};
+
 // CHANGE PASSWORD
-export const changePassword = (user, history) => async (dispatch) => {
+export const changePassword = (user) => async (dispatch) => {
   dispatch({
     type: actionTypes.LOGIN_REQUEST,
   });
@@ -52,6 +81,7 @@ export const changePassword = (user, history) => async (dispatch) => {
   } catch (error) {
     dispatch(loginError(error.response.data));
     dispatch(loginSuccess());
+    Swal.fire("Oops...", "Something went wrong!", "error");
   }
 };
 

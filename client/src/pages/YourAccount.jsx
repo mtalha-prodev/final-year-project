@@ -1,17 +1,18 @@
 import { useEffect } from "react";
 import { RiArrowRightSLine } from "react-icons/ri";
 import { useSelector } from "react-redux";
-import { useHistory, Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 import UserProfile from "../components/userProfile/UserProfile";
 const YourAccount = () => {
   const { userAuth } = useSelector((state) => state.login);
-  const history = useHistory();
 
   useEffect(() => {
+    document.title = "dStore | Your Account";
+
     // redirect user not login
-    if (!userAuth) {
-      history.push("/login");
-    }
+    // if (!userAuth) {
+    //   history.push("/login");
+    // }
     // return () => {};
   }, []);
 

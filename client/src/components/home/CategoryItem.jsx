@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 
-const CategoryItem = ({ img_1, img_2, img_3, title, price }) => {
+const CategoryItem = ({ img_1, img_2, img_3, title, price, path }) => {
   return (
     <div className="card" style={{ width: "19rem" }}>
       <div className="image__categories">
@@ -13,7 +13,7 @@ const CategoryItem = ({ img_1, img_2, img_3, title, price }) => {
       <div className="card-body">
         <h5 className="card-title">{title}</h5>
         <p className="card-text text-muted">Starting from ${price}</p>
-        <Link to="/" className="btn btn-default">
+        <Link to={path} className="btn btn-default">
           VIEW PRODUCTS
         </Link>
       </div>

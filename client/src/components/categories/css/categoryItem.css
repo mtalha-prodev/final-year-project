@@ -1,0 +1,111 @@
+.all_categories {
+  display: flex;
+  align-items: flex-start;
+}
+
+.all_categories .left__side {
+  display: flex;
+}
+.all_categories .left__side .category__brand {
+  width: 180px;
+}
+
+.all_categories .shoping__category {
+  display: flex;
+  flex-direction: column;
+  width: 200px;
+  padding: 0 !important;
+}
+
+.all_categories .category__cart {
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  align-items: center;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.category__cart .card {
+  object-fit: contain !important;
+  width: 16.5rem !important;
+  align-items: center;
+}
+.category__cart .card .star__off {
+  color: red;
+  font-size: 14px;
+  font-weight: 600;
+}
+.category__cart .card .card-body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.category__cart .card .star__off {
+  width: 100%;
+}
+.category__cart .card .star__off p {
+  margin: 0;
+  margin-top: 20px;
+  margin-left: 20px;
+}
+.category__cart .card .card-body .card-title {
+  font-size: 20px;
+  font-weight: 400;
+  color: #313b47;
+}
+.category__cart .card .card-body .card-text {
+  font-size: 14px;
+  color: #313b47;
+}
+.category__cart .card .card-body .add__card__btn {
+  display: flex;
+}
+.category__cart .card .card-body .add__card__btn .whish__product {
+  color: #606975;
+  font-size: 16px;
+}
+.category__cart .card .card-body .add__card__btn .add__whish {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
+  margin-right: 10px;
+  width: 30px;
+  height: 30px;
+  border: 1px solid #e1e7ec;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: all 200ms ease-in;
+}
+.category__cart .card .card-body .add__card__btn .red {
+  color: red;
+}
+.category__cart .card .card-body .add__card__btn .add__whish:hover {
+  background-color: #f5f5f5;
+}
+
+@media (max-width: 650px) {
+  .all_categories {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+  .all_categories .left__side {
+    display: flex;
+    width: 100%;
+    /* margin-right: 50px !important; */
+  }
+  .all_categories .left__side .category__brand {
+    width: 100%;
+  }
+}
+@media (max-width: 570px) {
+  .category__cart .card {
+    object-fit: contain !important;
+    width: 100% !important;
+    align-items: center;
+  }
+}

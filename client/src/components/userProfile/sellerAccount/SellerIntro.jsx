@@ -1,6 +1,11 @@
 import "./sellerIntro.css";
+import { useEffect } from "react";
 
 const SellerIntro = () => {
+  useEffect(() => {
+    document.title = "dStore | SellerIntro";
+  }, []);
+
   return (
     <div className="seller__intro">
       <div className="seller__start">

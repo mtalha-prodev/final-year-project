@@ -43,6 +43,10 @@ export const loginReducer = (state = initialState, action) => {
         ...state,
         user: action.payload,
       };
+    case actionTypes.UPDATE_PROFILE_PIC:
+      return {
+        ...state,
+      };
 
     default:
       return state;

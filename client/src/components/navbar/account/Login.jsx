@@ -1,6 +1,6 @@
 import "./css/login.css";
 import { Link, useHistory } from "react-router-dom";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { loginRequest } from "../../../redux/action/loginAction";
 
@@ -42,17 +42,6 @@ const Login = () => {
       };
     });
   };
-
-  useEffect(() => {
-    if (userAuth) {
-      history.push("/your_account");
-    }
-    // return () => {
-    //   if (user.userAuth) {
-    //     history.block("/login");
-    //   }
-    // };
-  }, []);
 
   return (
     <div className="login">

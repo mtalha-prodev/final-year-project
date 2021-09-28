@@ -104,7 +104,11 @@ const Navbar = () => {
                 {navData.map((item, index) => {
                   return (
                     <li key={index} className={item.liClasses}>
-                      <Link to={item.path} className={item.linkClasses}>
+                      <Link
+                        to={item.path}
+                        className={item.linkClasses}
+                        onClick={() => setSidebar(!sidebar)}
+                      >
                         {item.title}
                       </Link>
                       <span className={item.iconClasses}>{item.icon}</span>

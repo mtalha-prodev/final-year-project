@@ -2,8 +2,11 @@ import "./style/changePassword.css";
 import { Link, useHistory } from "react-router-dom";
 import { RiArrowRightSLine } from "react-icons/ri";
 import { useSelector, useDispatch } from "react-redux";
-import { useState } from "react";
-import { changePassword } from "../../../redux/action/loginAction";
+import { useState, useEffect } from "react";
+import {
+  changePassword,
+  updateProfilePic,
+} from "../../../redux/action/loginAction";
 import { base_url } from "../../../utils/constants";
 
 const ChangePassword = () => {
@@ -37,13 +40,14 @@ const ChangePassword = () => {
 
     formData.append("profile_pic", passwordUpdata.profile_pic);
 
-    console.log(formData.get("profile_pic"));
+    dispatch(updateProfilePic(formData));
 
-    setTimeout(() => {
-      setPasswordUpdata({
-        profile_pic: "",
-      });
-    }, 1000);
+    console.log(formData.get("profile_pic"));
+    // setTimeout(() => {
+    //   setPasswordUpdata({
+    //     profile_pic: "",
+    //   });
+    // }, 1000);
   };
 
   const uploadEvent = (e) => {
@@ -74,6 +78,10 @@ const ChangePassword = () => {
       });
     }, 1000);
   };
+
+  useEffect(() => {
+    document.title = "dStore | Change Password";
+  }, []);
   return (
     <>
       <div className="set__route">
@@ -104,7 +112,7 @@ const ChangePassword = () => {
               autoComplete="off"
             >
               <div className="mb-3">
-                <label className="form-label">Upload Profile Pic</label>
+                <label className="form-label">Select New Profile Pic</label>
                 <input
                   type="file"
                   className="form-control"

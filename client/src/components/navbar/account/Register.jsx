@@ -56,11 +56,6 @@ const Register = () => {
     if (userLogin.userAuth) {
       history.push("/your_account");
     }
-    return () => {
-      // if (userLogin.userAuth) {
-      //   history.push("/");
-      // }
-    };
   }, []);
 
   return (
