@@ -26,14 +26,6 @@ export const navData = [
     iconClasses: "arrow-link",
   },
   {
-    title: "account",
-    liClasses: "nav-item",
-    linkClasses: "nav-link",
-    path: "/login",
-    icon: <ArrowRightIcon />,
-    iconClasses: "arrow-link",
-  },
-  {
     title: "PAGES",
     liClasses: "nav-item",
     linkClasses: "nav-link",
