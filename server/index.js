@@ -16,6 +16,7 @@ app.use(cors());
 app.use(express.static("public"));
 // user routes
 app.use("/api/user", userRoutes);
+// app.use("/api/product", productRoutes);
 
 app.listen(process.env.PORT, () => {
   console.log(`server running ${process.env.PORT}`);
