@@ -5,6 +5,7 @@ const cors = require("cors");
 const morgan = require("morgan");
 const bodyPardser = require("body-parser");
 const userRoutes = require("./routes/userRoutes.js");
+const errorMiddleware = require("./middleware/error.js");
 
 const app = express();
 
@@ -15,8 +16,10 @@ app.use(cors());
 
 app.use(express.static("public"));
 // user routes
-app.use("/api/user", userRoutes);
+app.use("/api/v1", userRoutes);
 // app.use("/api/product", productRoutes);
+
+app.use(errorMiddleware);
 
 app.listen(process.env.PORT, () => {
   console.log(`server running ${process.env.PORT}`);

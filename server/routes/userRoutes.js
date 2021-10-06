@@ -9,6 +9,41 @@ const fs = require("fs");
 
 const getUpload = require("./storage.js");
 const path = require("path");
+const {
+  getAllProducts,
+  createProduct,
+  updateProduct,
+  deleteProduct,
+  getProductDetail,
+} = require("../controllers/productControllers.js");
+
+// user route
+// Access: public
+// url: http://localhost:500/api/v1/products
+// method: GET
+// get product
+
+router.route("/products").get(getAllProducts);
+// get single product
+router.route("/product/:id").get(getProductDetail);
+
+// admin route
+// Access: private
+// url: http://localhost:500/api/v1/product/new
+// method: post
+// create product
+router.route("/product/new").post(createProduct);
+
+// admin route
+// Access: private
+// url: http://localhost:8000/api/v1/product/:id
+// method: put
+// updata product
+
+router.route("/product/:id").put(updateProduct);
+
+//delete product same mathod for update
+router.route("/product/:id").delete(deleteProduct);
 
 // set logic to uploadImage image in database
 
@@ -30,7 +65,7 @@ router.get("/", async (req, res) => {
 // url: http://localhost:500/api/users/register
 // method: POST
 // user registration
-router.post("/register", async (req, res) => {
+router.post("/user/register", async (req, res) => {
   try {
     const { name, email, password } = req.body;
 
@@ -55,7 +90,7 @@ router.post("/register", async (req, res) => {
 // url: http://localhost:500/api/users/login
 // method: POST
 // access login
-router.post("/login", async (req, res) => {
+router.post("/user/login", async (req, res) => {
   const { email, password } = req.body;
 
   const user = await User.findOne({ email });
@@ -132,7 +167,7 @@ router.post("/profile_pic", verifyToken, getUpload, async (req, res) => {
 // url: http://localhost:500/api/users/change_password
 // method: PUT
 // updata user name & password
-router.put("/change_password", verifyToken, async (req, res) => {
+router.put("/user/change_password", verifyToken, async (req, res) => {
   try {
     const { name, newPassword, newPassword2, oldPassword } = req.body;
 
