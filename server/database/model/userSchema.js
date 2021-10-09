@@ -1,6 +1,7 @@
 const mongoose = require("mongoose");
 const moment = require("moment");
 const bcrypt = require("bcryptjs");
+const jwt = require("jsonwebtoken");
 
 const userSchema = new mongoose.Schema({
   name: {
@@ -19,6 +20,10 @@ const userSchema = new mongoose.Schema({
   profile_pic: {
     type: String,
     default: "empty-avatar.jpg",
+  },
+  role: {
+    type: String,
+    default: "user",
   },
   createdAt: {
     type: String,
@@ -42,6 +47,11 @@ userSchema.methods.isPasswordMatch = async function (enterPassword) {
   return await bcrypt.compare(enterPassword, this.password);
 };
 
+userSchema.methods.getJWTToken = function () {
+  return jwt.sign({ id: this._id }, process.env.SECRET_KEY, {
+    expiresIn: process.env.JWT_EXPIRE,
+  });
+};
 const UserReg = new mongoose.model("User", userSchema);
 
 module.exports = UserReg;

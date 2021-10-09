@@ -3,47 +3,14 @@ const jwt = require("jsonwebtoken");
 const User = require("../database/model/userSchema.js");
 const moment = require("moment");
 const bcrypt = require("bcryptjs");
-const verifyToken = require("../middleware/verifyToken.js");
+// const { verifyToken } = require("../middleware/verifyToken.js");
+const { verifyToken } = require("../middleware/verifyToken.js");
+const sendToken = require("../utils/jwtToken.js");
 
 const fs = require("fs");
 
 const getUpload = require("./storage.js");
 const path = require("path");
-const {
-  getAllProducts,
-  createProduct,
-  updateProduct,
-  deleteProduct,
-  getProductDetail,
-} = require("../controllers/productControllers.js");
-
-// user route
-// Access: public
-// url: http://localhost:500/api/v1/products
-// method: GET
-// get product
-
-router.route("/products").get(getAllProducts);
-// get single product
-router.route("/product/:id").get(getProductDetail);
-
-// admin route
-// Access: private
-// url: http://localhost:500/api/v1/product/new
-// method: post
-// create product
-router.route("/product/new").post(createProduct);
-
-// admin route
-// Access: private
-// url: http://localhost:8000/api/v1/product/:id
-// method: put
-// updata product
-
-router.route("/product/:id").put(updateProduct);
-
-//delete product same mathod for update
-router.route("/product/:id").delete(deleteProduct);
 
 // set logic to uploadImage image in database
 
@@ -97,27 +64,43 @@ router.post("/user/login", async (req, res) => {
 
   if (user && (await user.isPasswordMatch(password))) {
     // generate token
-    let token = jwt.sign(
-      { id: user._id, email: user.email },
-      process.env.SECRET_KEY,
-      {
-        expiresIn: 3600,
-      }
-    );
+    // let token = jwt.sign(
+    //   { id: user._id, email: user.email },
+    //   process.env.SECRET_KEY,
+    //   {
+    //     expiresIn: 3600,
+    //   }
+    // );
 
-    res.status(200).json({
-      message: "LOGIN SUCCESSFULY",
-      user: {
-        email: user.email,
-        name: user.name,
-        profile_pic: user.profile_pic,
-        id: user._id,
-      },
-      token: token,
-    });
+    sendToken(user, 200, res);
+    // const token = user.getJWTTOKEN();
+
+    // res.status(200).json({
+    //   message: "LOGIN SUCCESSFULY",
+    //   user: {
+    //     email: user.email,
+    //     name: user.name,
+    //     profile_pic: user.profile_pic,
+    //     id: user._id,
+    //   },
+    //   token: token,
+    // });
   } else {
     res.status(404).json({ message: "USER NOT EXIST" });
   }
+});
+
+// user logout
+
+router.get("/logout", async (req, res) => {
+  res.cookie("token", null, {
+    expires: new Date(Date.now()),
+    httpOnly: true,
+  });
+  res.status(200).json({
+    status: true,
+    message: "Logged out",
+  });
 });
 
 // user profile pic upload route

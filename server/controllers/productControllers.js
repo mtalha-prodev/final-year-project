@@ -22,19 +22,26 @@ exports.createProduct = async (req, res, next) => {
 };
 
 // get all product
-exports.getAllProducts = async (req, res) => {
+exports.getAllProducts = async (req, res, next) => {
   try {
+    // pagination
+    const resultPerPage = 5;
+
+    const countProduct = await Product.countDocuments();
+
     // search products
     const apiFeature = new ApiFeatures(Product.find(), req.query)
       .search()
-      .filter();
-
+      .filter()
+      .pagination(resultPerPage);
     const products = await apiFeature.query;
 
     res.status(200).json({
       status: true,
       products,
+      countProduct,
     });
+    next();
   } catch (error) {
     res.status(500).json({
       status: false,

@@ -21,13 +21,13 @@ class ApiFeatures {
   filter() {
     const queryCopy = { ...this.queryStr };
 
-    console.log(queryCopy);
+    // console.log(queryCopy);
     // remove some fields from category
 
     const removeField = ["keyword", "page", "limit"];
 
     removeField.forEach((key) => delete queryCopy[key]);
-    console.log(queryCopy);
+    // console.log(queryCopy);
 
     // filter price and rating
     let queryStr = JSON.stringify(queryCopy);
@@ -36,7 +36,17 @@ class ApiFeatures {
 
     this.query = this.query.find(JSON.parse(queryStr));
 
-    console.log(queryStr);
+    // console.log(queryStr);
+    return this;
+  }
+
+  pagination(resultPerPage) {
+    const currentPage = Number(this.queryStr.page) || 1;
+
+    const skip = resultPerPage * (currentPage - 1);
+
+    this.query = this.query.limit().skip(skip);
+
     return this;
   }
 }
